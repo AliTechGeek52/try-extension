@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <br>
+        js
+        <input type="file" id="js1" />
+        <br>
+        html
+        <input type="file" id="html1" />
+        <br>
+        css
+        <input type="file" id="css1"/>
+        <br>
+        <button  onclick="Result()">Result</button>
+    </div>
+    <div id="div1">
+
+    </div>
+</body>
+<script>
+    
+//     var fileName = document.getElementById('file').files[0].name;
+//     jsFileSize = document.getElementById('file').files[0].size;
+//     var fileType = document.getElementById('file').files[0].type;
+//     var fileModifiedDate = document.getElementById('file').files[0].lastModifiedDate;
+function Result(){
+    var jsFileSize = document.getElementById('js1').files[0].size; ;
+    var htmlFileSize = document.getElementById('html1').files[0].size;
+    var cssFileSize = document.getElementById('css1').files[0].size;
+    var total = jsFileSize+htmlFileSize+cssFileSize;
+    var csspercent = cssFileSize*100/total;
+    var jspercent = jsFileSize*100/total;
+    var htmlpercent = htmlFileSize*100/total;
+
+    var parahtml = document.createElement("p");
+    parahtml.setAttribute("id", "html");
+    var nodehtml = document.createTextNode("html "+htmlpercent+"%");
+    parahtml.appendChild(nodehtml);
+    document.getElementById("div1").appendChild(parahtml);
+    document.getElementById("html").style.border = "thick solid red";
+    document.getElementById("html").style.height = "50px";
+    document.getElementById("html").style.width = htmlpercent+"%";
+
+    var paracss = document.createElement("p");
+    paracss.setAttribute("id", "css");
+    var nodecss = document.createTextNode("css "+csspercent+"%");
+    paracss.appendChild(nodecss);
+    document.getElementById("div1").appendChild(paracss);
+    document.getElementById("css").style.height = "50px";
+    document.getElementById("css").style.width = csspercent+"%";    
+    document.getElementById("css").style.border = "thick solid blue";
+
+    var parajs = document.createElement("p");
+    parajs.setAttribute("id", "js");
+    var nodejs = document.createTextNode("js "+jspercent+"%");
+    parajs.appendChild(nodejs);
+    document.getElementById("div1").appendChild(parajs);
+    document.getElementById("js").style.height = "50px";
+    document.getElementById("js").style.width = jspercent+"%";
+    document.getElementById("js").style.border = "thick solid green";
+
+    console.log(jsFileSize,htmlFileSize,cssFileSize,csspercent,jspercent,htmlpercent);
+
+}
+
+
+
+</script>
+</html>
